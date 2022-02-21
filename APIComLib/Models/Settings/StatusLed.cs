@@ -9,5 +9,6 @@ namespace APIComLib.Models.Settings
     public class StatusLed
     {
         public int enabled { get; set; }
+        public StatusLed(int enabled) { this.enabled = enabled; }
     }
 }

@@ -10,17 +10,20 @@ using settingsRoot = APIComLib.Models.Settings.Root;
 
 namespace APIComLib
 {
-    enum Effects
+    interface IAPICommunication
     {
-        NONE,
-        FADE,
-        RGB,
-        POLICE,
-        RELAX,
-        STROBO,
-        BELL
+        Task<stateRgbw> GetCurrentStateAsync();
+        Task<stateRgbw> GetCurrentStateExtAsync();
+        Task<stateRgbw> SetColorAsync(string color, int colorFade);
+        Task<stateRgbw> SetColorExtAsync(string color, int colorFade);
+        Task<stateRgbw> SetEffectAsync(int effectID, int effectFade, int effectStep);
+        Task<stateRgbw> SetEffectExtAsync(int effectID, int effectFade, int effectStep);
+        Task<stateRgbw> SetFavColorsAsync(OrderedDictionary favColors);
+        Task<Settings> GetSettingsAsync();
+        Task<Settings> SetSettingsAsync(Settings settings);
+
     }
-    public class APICommunication
+    public class APICommunication : IAPICommunication
     {
         HttpClient client;
         string APIAddress;
@@ -49,7 +52,14 @@ namespace APIComLib
                 endpoint = getStateExtEndpoint;
 
             HttpResponseMessage response = await client.GetAsync(APIAddress+endpoint);
-            response.EnsureSuccessStatusCode();
+            try
+            {
+                response.EnsureSuccessStatusCode();
+            }
+            catch (HttpRequestException ex)
+            {
+                throw;
+            }
             string responseBody = await response.Content.ReadAsStringAsync();
 
             var deserializedResponseBody = JsonConvert.DeserializeObject<stateRoot>(responseBody);
@@ -87,15 +97,29 @@ namespace APIComLib
             var requestBody = JsonConvert.SerializeObject(root);
             return new StringContent(requestBody, Encoding.UTF8, "application/json");
         }
-        public async Task<stateRgbw> getCurrentStateAsync()
+        public async Task<stateRgbw> GetCurrentStateAsync()
         {
-            return await GetStateAsync(isExtended: false);
+            try
+            {
+                return await GetStateAsync(isExtended: false);
+            }
+            catch(HttpRequestException ex)
+            {
+                throw;
+            }
         }
-        public async Task<stateRgbw> getCurrentStateExtAsync()
+        public async Task<stateRgbw> GetCurrentStateExtAsync()
         {
-            return await GetStateAsync(isExtended: true);
+            try
+            {
+                return await GetStateAsync(isExtended: true);
+            }
+            catch(HttpRequestException ex)
+            {
+                throw;
+            }
         }
-        public async Task<stateRgbw> setColorAsync(string color, int colorFade)
+        public async Task<stateRgbw> SetColorAsync(string color, int colorFade)
         {
             var state = new stateRgbw();
             var durations = new DurationsMs();
@@ -124,7 +148,7 @@ namespace APIComLib
                 throw;
             }
         }
-        public async Task<stateRgbw> setColorExtAsync(string color, int colorFade)
+        public async Task<stateRgbw> SetColorExtAsync(string color, int colorFade)
         {
             var state = new stateRgbw();
             var durations = new DurationsMs();
@@ -153,7 +177,7 @@ namespace APIComLib
                 throw;
             }
         }
-        public async Task<stateRgbw> setEffectAsync(int effectID, int effectFade, int effectStep)
+        public async Task<stateRgbw> SetEffectAsync(int effectID, int effectFade, int effectStep)
         {
             var state = new stateRgbw();
             var durations = new DurationsMs();
@@ -188,7 +212,7 @@ namespace APIComLib
                 throw;
             }
         }
-        public async Task<stateRgbw> setEffectExtAsync(int effectID, int effectFade, int effectStep)
+        public async Task<stateRgbw> SetEffectExtAsync(int effectID, int effectFade, int effectStep)
         {
             var state = new stateRgbw();
             var durations = new DurationsMs();
@@ -223,7 +247,7 @@ namespace APIComLib
                 throw;
             }
         }
-        public async Task<stateRgbw> setFavColorsAsync(OrderedDictionary favColors)
+        public async Task<stateRgbw> SetFavColorsAsync(OrderedDictionary favColors)
         {
             var state = new stateRgbw();
 
@@ -250,7 +274,14 @@ namespace APIComLib
         {
             string endpoint = getSettingsEndpoint;
             HttpResponseMessage response = await client.GetAsync(APIAddress + endpoint);
-            response.EnsureSuccessStatusCode();
+            try
+            {
+                response.EnsureSuccessStatusCode();
+            }
+            catch(HttpRequestException ex)
+            {
+                throw;
+            }
             string responseBody = await response.Content.ReadAsStringAsync();
 
             var deserializedResponseBody = JsonConvert.DeserializeObject<settingsRoot>(responseBody);

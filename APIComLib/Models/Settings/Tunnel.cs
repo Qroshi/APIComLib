@@ -9,5 +9,6 @@ namespace APIComLib.Models.Settings
     public class Tunnel
     {
         public int enabled { get; set; }
+        public Tunnel(int enabled) { this.enabled = enabled; }
     }
 }

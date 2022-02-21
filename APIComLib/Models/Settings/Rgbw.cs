@@ -16,5 +16,12 @@ namespace APIComLib.Models.Settings
         public List<OrderedDictionary> fieldsPreferences { get; set; }
         public bool ShouldSerializefieldsPreferences()
         { return false; }
+        public Rgbw(int colorMode, int outputMode, int pwmFreq, int buttonMode)
+        {
+            this.colorMode = colorMode;
+            this.outputMode = outputMode;
+            this.pwmFreq = pwmFreq;
+            this.buttonMode = buttonMode;
+        }
     }
 }

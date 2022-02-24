@@ -14,49 +14,7 @@ namespace GUI
 
         public Settings currentSettings;
 
-        public string storedJSON = @"{
-                ""settings"": {
-                ""deviceName"": ""My BleBox device name"",
-                ""tunnel"": {
-                            ""enabled"": 1
-                },
-                ""statusLed"": {
-                            ""enabled"": 1
-                },
-                ""rgbw"": {
-                            ""colorMode"": 1,
-                    ""outputMode"": 1,
-                    ""pwmFreq"": 600,
-                    ""buttonMode"": 4,
-                    ""fieldsPreferences"": [
-                    {
-                                ""name"": ""buttonMode"",
-                        ""values"": [
-                        4
-                        ]
-                    },
-                    {
-                                ""name"": ""colorMode"",
-                        ""values"": [
-                        1
-                        ]
-                    },
-                    {
-                                ""name"": ""outputMode"",
-                        ""values"": [
-                        1
-                        ]
-                    },
-                    {
-                                ""name"": ""pwmFreq"",
-                        ""values"": [
-                        600
-                        ]
-                    }
-                    ]
-                }
-                    }
-                }";
+        public string storedJSON = "";
         public Form1()
         {
             InitializeComponent();
@@ -96,7 +54,7 @@ namespace GUI
             }
             catch (HttpRequestException ex)
             {
-                MessageBox.Show($"Exception occured. Status code {ex.StatusCode}");
+                MessageBox.Show($"Exception occured. Status code {ex.StatusCode}. {ex.Message}");
             }
         }
 
@@ -114,7 +72,7 @@ namespace GUI
             }
             catch (HttpRequestException ex)
             {
-                MessageBox.Show($"Exception occured. Code {ex.StatusCode}");
+                MessageBox.Show($"Exception occured. Status code {ex.StatusCode}. {ex.Message}");
             }
             catch(ArgumentOutOfRangeException ex)
             {
@@ -139,7 +97,7 @@ namespace GUI
             }
             catch (HttpRequestException ex)
             {
-                MessageBox.Show($"Exception occured. Code {ex.StatusCode}");
+                MessageBox.Show($"Exception occured. Status code {ex.StatusCode}. {ex.Message}");
             }
             catch (ArgumentOutOfRangeException ex)
             {
@@ -161,7 +119,7 @@ namespace GUI
             }
             catch (HttpRequestException ex)
             {
-                MessageBox.Show($"Exception occured. Code {ex.StatusCode}");
+                MessageBox.Show($"Exception occured. Status code {ex.StatusCode}. {ex.Message}");
             }
             catch (ArgumentOutOfRangeException ex)
             {
@@ -181,7 +139,7 @@ namespace GUI
             }
             catch (HttpRequestException ex)
             {
-                MessageBox.Show($"Exception occured. Status code {ex.StatusCode}");
+                MessageBox.Show($"Exception occured. Status code {ex.StatusCode}. {ex.Message}");
             }
         }
 
@@ -196,7 +154,7 @@ namespace GUI
             }
             catch (HttpRequestException ex)
             {
-                MessageBox.Show($"Exception occured. Code {ex.StatusCode}");
+                MessageBox.Show($"Exception occured. Status code {ex.StatusCode}. {ex.Message}");
             }
             storedJSON = JsonConvert.SerializeObject(currentState);
         }

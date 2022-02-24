@@ -24,14 +24,17 @@ namespace GUI
             try
             {
                 settings.deviceName = Name.Text;
-                if (Int32.Parse(Tunnel.Text) == 0 || Int32.Parse(Tunnel.Text) == 1)
-                    settings.tunnel = new Tunnel(Int32.Parse(Tunnel.Text));
+
+                if (Tunnel.Checked == true)
+                    settings.tunnel = new Tunnel(1);
                 else
-                    throw new ArgumentOutOfRangeException("Tunnel", $"Value of Tunnel must be 0 or 1.");
-                if (Int32.Parse(StatusLed.Text) == 0 || Int32.Parse(StatusLed.Text) == 1)
-                    settings.statusLed = new StatusLed(Int32.Parse(StatusLed.Text));
+                    settings.tunnel = new Tunnel(0);
+
+                if (StatusLed.Checked == true)
+                    settings.statusLed = new StatusLed(1);
                 else
-                    throw new ArgumentOutOfRangeException("StatusLed", $"Value of StatusLed must be 0 or 1.");
+                    settings.statusLed = new StatusLed(0);
+
                 settings.rgbw = new Rgbw(Int32.Parse(ColorMode.Text),
                                         Int32.Parse(OutputMode.Text),
                                         Int32.Parse(PwmFreq.Text),

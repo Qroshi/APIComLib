@@ -32,9 +32,7 @@
             this.Name = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.Tunnel = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.StatusLed = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.ColorMode = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -43,6 +41,8 @@
             this.PwmFreq = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.ButtonMode = new System.Windows.Forms.TextBox();
+            this.Tunnel = new System.Windows.Forms.CheckBox();
+            this.StatusLed = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // Set
@@ -81,14 +81,6 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Tunnel";
             // 
-            // Tunnel
-            // 
-            this.Tunnel.Location = new System.Drawing.Point(35, 118);
-            this.Tunnel.Name = "Tunnel";
-            this.Tunnel.Size = new System.Drawing.Size(100, 23);
-            this.Tunnel.TabIndex = 3;
-            this.Tunnel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -97,14 +89,6 @@
             this.label3.Size = new System.Drawing.Size(58, 15);
             this.label3.TabIndex = 6;
             this.label3.Text = "StatusLed";
-            // 
-            // StatusLed
-            // 
-            this.StatusLed.Location = new System.Drawing.Point(214, 118);
-            this.StatusLed.Name = "StatusLed";
-            this.StatusLed.Size = new System.Drawing.Size(100, 23);
-            this.StatusLed.TabIndex = 5;
-            this.StatusLed.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label4
             // 
@@ -174,11 +158,33 @@
             this.ButtonMode.TabIndex = 13;
             this.ButtonMode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // Tunnel
+            // 
+            this.Tunnel.AutoSize = true;
+            this.Tunnel.Location = new System.Drawing.Point(35, 122);
+            this.Tunnel.Name = "Tunnel";
+            this.Tunnel.Size = new System.Drawing.Size(68, 19);
+            this.Tunnel.TabIndex = 15;
+            this.Tunnel.Text = "Enabled";
+            this.Tunnel.UseVisualStyleBackColor = true;
+            // 
+            // StatusLed
+            // 
+            this.StatusLed.AutoSize = true;
+            this.StatusLed.Location = new System.Drawing.Point(214, 122);
+            this.StatusLed.Name = "StatusLed";
+            this.StatusLed.Size = new System.Drawing.Size(68, 19);
+            this.StatusLed.TabIndex = 16;
+            this.StatusLed.Text = "Enabled";
+            this.StatusLed.UseVisualStyleBackColor = true;
+            // 
             // SetSettings_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(380, 421);
+            this.Controls.Add(this.StatusLed);
+            this.Controls.Add(this.Tunnel);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.ButtonMode);
             this.Controls.Add(this.label6);
@@ -188,9 +194,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.ColorMode);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.StatusLed);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.Tunnel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Name);
             this.Controls.Add(this.Set);
@@ -207,9 +211,7 @@
         private TextBox Name;
         private Label label1;
         private Label label2;
-        private TextBox Tunnel;
         private Label label3;
-        private TextBox StatusLed;
         private Label label4;
         private TextBox ColorMode;
         private Label label5;
@@ -218,5 +220,7 @@
         private TextBox PwmFreq;
         private Label label7;
         private TextBox ButtonMode;
+        private CheckBox Tunnel;
+        private CheckBox StatusLed;
     }
 }

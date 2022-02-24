@@ -8,9 +8,9 @@ namespace APIComLib.Models
 {
     public class Effects
     {
-        public static string getEffect(int nr)
+        public static string getEffect(int id)
         {
-            switch(nr)
+            switch(id)
             {
                 case 0: return "NONE"; break;
                 case 1: return "FADE"; break;

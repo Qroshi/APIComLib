@@ -20,6 +20,8 @@ namespace UnitTests
     [TestClass]
     public class UnitTests
     {
+        string address = "http://127.0.0.1";
+
         [TestMethod]
         public async Task Get_current_state_returns_valid_state()
         {
@@ -49,7 +51,7 @@ namespace UnitTests
 
             var httpClient = new HttpClient(handlerMock.Object);
 
-            var ApiCom = new APICommunication(httpClient, "http://127.0.0.1");
+            var ApiCom = new APICommunication(httpClient, address);
 
             stateRgbw returnedRgbw = await ApiCom.GetCurrentStateAsync();
 
@@ -150,7 +152,7 @@ namespace UnitTests
 
             var httpClient = new HttpClient(handlerMock.Object);
 
-            var ApiCom = new APICommunication(httpClient, "http://127.0.0.1");
+            var ApiCom = new APICommunication(httpClient, address);
 
             stateRgbw returnedRgbw = await ApiCom.GetCurrentStateExtAsync();
 
@@ -262,7 +264,7 @@ namespace UnitTests
 
             var httpClient = new HttpClient(handlerMock.Object);
 
-            var ApiCom = new APICommunication(httpClient, "http://127.0.0.1");
+            var ApiCom = new APICommunication(httpClient, address);
 
 
             stateRgbw returnedRgbw = await ApiCom.SetColorAsync("ffff300000", 1000);
@@ -306,7 +308,7 @@ namespace UnitTests
 
             var httpClient = new HttpClient(handlerMock.Object);
 
-            var ApiCom = new APICommunication(httpClient, "http://127.0.0.1");
+            var ApiCom = new APICommunication(httpClient, address);
 
 
             var ex = await Assert.ThrowsExceptionAsync<HttpRequestException>(async () =>
@@ -347,7 +349,7 @@ namespace UnitTests
 
             var httpClient = new HttpClient();
 
-            var ApiCom = new APICommunication(httpClient, "http://127.0.0.1");
+            var ApiCom = new APICommunication(httpClient, address);
 
 
             var ex = await Assert.ThrowsExceptionAsync<ArgumentOutOfRangeException>(async () =>
@@ -362,7 +364,7 @@ namespace UnitTests
 
             var httpClient = new HttpClient();
 
-            var ApiCom = new APICommunication(httpClient, "http://127.0.0.1");
+            var ApiCom = new APICommunication(httpClient, address);
 
 
             var ex = await Assert.ThrowsExceptionAsync<ArgumentOutOfRangeException>(async () =>
@@ -422,7 +424,7 @@ namespace UnitTests
 
             var httpClient = new HttpClient(handlerMock.Object);
 
-            var ApiCom = new APICommunication(httpClient, "http://127.0.0.1");
+            var ApiCom = new APICommunication(httpClient, address);
 
 
             stateRgbw returnedRgbw = await ApiCom.SetColorExtAsync("ffff300000", 1000);
@@ -498,7 +500,7 @@ namespace UnitTests
 
             var httpClient = new HttpClient(handlerMock.Object);
 
-            var ApiCom = new APICommunication(httpClient, "http://127.0.0.1");
+            var ApiCom = new APICommunication(httpClient, address);
 
 
             var ex = await Assert.ThrowsExceptionAsync<HttpRequestException>(async () =>
@@ -539,7 +541,7 @@ namespace UnitTests
 
             var httpClient = new HttpClient();
 
-            var ApiCom = new APICommunication(httpClient, "http://127.0.0.1");
+            var ApiCom = new APICommunication(httpClient, address);
 
 
             var ex = await Assert.ThrowsExceptionAsync<ArgumentOutOfRangeException>(async () =>
@@ -554,7 +556,7 @@ namespace UnitTests
 
             var httpClient = new HttpClient();
 
-            var ApiCom = new APICommunication(httpClient, "http://127.0.0.1");
+            var ApiCom = new APICommunication(httpClient, address);
 
 
             var ex = await Assert.ThrowsExceptionAsync<ArgumentOutOfRangeException>(async () =>
@@ -592,7 +594,7 @@ namespace UnitTests
 
             var httpClient = new HttpClient(handlerMock.Object);
 
-            var ApiCom = new APICommunication(httpClient, "http://127.0.0.1");
+            var ApiCom = new APICommunication(httpClient, address);
 
 
             stateRgbw returnedRgbw = await ApiCom.SetEffectAsync(5,1500,2000);
@@ -635,7 +637,7 @@ namespace UnitTests
 
             var httpClient = new HttpClient(handlerMock.Object);
 
-            var ApiCom = new APICommunication(httpClient, "http://127.0.0.1");
+            var ApiCom = new APICommunication(httpClient, address);
 
 
             var ex =await Assert.ThrowsExceptionAsync<HttpRequestException>(async () =>
@@ -676,7 +678,7 @@ namespace UnitTests
 
             var httpClient = new HttpClient();
 
-            var ApiCom = new APICommunication(httpClient, "http://127.0.0.1");
+            var ApiCom = new APICommunication(httpClient, address);
 
 
             var ex = await Assert.ThrowsExceptionAsync<ArgumentOutOfRangeException>(async () =>
@@ -691,7 +693,7 @@ namespace UnitTests
 
             var httpClient = new HttpClient();
 
-            var ApiCom = new APICommunication(httpClient, "http://127.0.0.1");
+            var ApiCom = new APICommunication(httpClient, address);
 
 
             var ex = await Assert.ThrowsExceptionAsync<ArgumentOutOfRangeException>(async () =>
@@ -706,7 +708,7 @@ namespace UnitTests
 
             var httpClient = new HttpClient();
 
-            var ApiCom = new APICommunication(httpClient, "http://127.0.0.1");
+            var ApiCom = new APICommunication(httpClient, address);
 
 
             var ex = await Assert.ThrowsExceptionAsync<ArgumentOutOfRangeException>(async () =>
@@ -766,7 +768,7 @@ namespace UnitTests
 
             var httpClient = new HttpClient(handlerMock.Object);
 
-            var ApiCom = new APICommunication(httpClient, "http://127.0.0.1");
+            var ApiCom = new APICommunication(httpClient, address);
 
 
             stateRgbw returnedRgbw = await ApiCom.SetEffectExtAsync(5, 1500, 2000);
@@ -842,7 +844,7 @@ namespace UnitTests
 
             var httpClient = new HttpClient(handlerMock.Object);
 
-            var ApiCom = new APICommunication(httpClient, "http://127.0.0.1");
+            var ApiCom = new APICommunication(httpClient, address);
 
 
             var ex = await Assert.ThrowsExceptionAsync<HttpRequestException>(async () =>
@@ -883,7 +885,7 @@ namespace UnitTests
 
             var httpClient = new HttpClient();
 
-            var ApiCom = new APICommunication(httpClient, "http://127.0.0.1");
+            var ApiCom = new APICommunication(httpClient, address);
 
 
             var ex = await Assert.ThrowsExceptionAsync<ArgumentOutOfRangeException>(async () =>
@@ -898,7 +900,7 @@ namespace UnitTests
 
             var httpClient = new HttpClient();
 
-            var ApiCom = new APICommunication(httpClient, "http://127.0.0.1");
+            var ApiCom = new APICommunication(httpClient, address);
 
 
             var ex = await Assert.ThrowsExceptionAsync<ArgumentOutOfRangeException>(async () =>
@@ -913,7 +915,7 @@ namespace UnitTests
 
             var httpClient = new HttpClient();
 
-            var ApiCom = new APICommunication(httpClient, "http://127.0.0.1");
+            var ApiCom = new APICommunication(httpClient, address);
 
 
             var ex = await Assert.ThrowsExceptionAsync<ArgumentOutOfRangeException>(async () =>
@@ -969,7 +971,7 @@ namespace UnitTests
 
             var httpClient = new HttpClient(handlerMock.Object);
 
-            var ApiCom = new APICommunication(httpClient, "http://127.0.0.1");
+            var ApiCom = new APICommunication(httpClient, address);
 
             var setfavColors = new OrderedDictionary();
             setfavColors.Add(0, "ff00000000");
@@ -981,7 +983,6 @@ namespace UnitTests
             stateRgbw returnedRgbw = await ApiCom.SetFavColorsAsync(setfavColors);
 
             var expectedRgbw = new stateRgbw();
-
             expectedRgbw.colorMode = 1;
             expectedRgbw.effectID = 5;
             expectedRgbw.desiredColor = "ffff300000";
@@ -1047,7 +1048,7 @@ namespace UnitTests
 
             var httpClient = new HttpClient(handlerMock.Object);
 
-            var ApiCom = new APICommunication(httpClient, "http://127.0.0.1");
+            var ApiCom = new APICommunication(httpClient, address);
 
             var setfavColors = new OrderedDictionary();
             setfavColors.Add(0, "ff00000000");
@@ -1099,10 +1100,9 @@ namespace UnitTests
         [TestMethod]
         public async Task Set_favColors_returns_Arg_Out_Of_Range_Ex_favColor()
         {
-
             var httpClient = new HttpClient();
 
-            var ApiCom = new APICommunication(httpClient, "http://127.0.0.1");
+            var ApiCom = new APICommunication(httpClient, address);
 
             var setfavColors = new OrderedDictionary();
             setfavColors.Add(0, "ff00000000");
@@ -1177,7 +1177,7 @@ namespace UnitTests
 
             var httpClient = new HttpClient(handlerMock.Object);
 
-            var ApiCom = new APICommunication(httpClient, "http://127.0.0.1");
+            var ApiCom = new APICommunication(httpClient, address);
 
             Settings returnedSettings = await ApiCom.GetSettingsAsync();
 
@@ -1308,7 +1308,7 @@ namespace UnitTests
 
             var httpClient = new HttpClient(handlerMock.Object);
 
-            var ApiCom = new APICommunication(httpClient, "http://127.0.0.1");
+            var ApiCom = new APICommunication(httpClient, address);
 
             var setSettings = new Settings();
             setSettings.deviceName = "My BleBox";
@@ -1385,7 +1385,7 @@ namespace UnitTests
 
             var httpClient = new HttpClient(handlerMock.Object);
 
-            var ApiCom = new APICommunication(httpClient, "http://127.0.0.1");
+            var ApiCom = new APICommunication(httpClient, address);
 
             var setSettings = new Settings();
             setSettings.deviceName = "My BleBox";

@@ -8,7 +8,7 @@ namespace APIComLib.Models
 {
     public class wLightboxConstraints
     {
-        public int colorFadeMin { get;} = 25;
+        public int colorFadeMin { get; } = 25;
         public int colorFadeMax { get; } = 3600000;
         public int effectFadeMin { get; } = 25;
         public int effectFadeMax { get; } = 3600000;
